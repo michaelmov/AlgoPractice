@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --watch"
   },
-  "author": "",
+  "author": "Michael Movsesov",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^27.0.1",
