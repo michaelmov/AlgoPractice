@@ -51,6 +51,7 @@ const directionMap: IDirectionMap = {
   },
 };
 
+// O(n) time | O(1) space
 export function escapeMaze(maze: string[], initialDir: string, startX: number, startY: number): Boolean {
   if (startY > maze.length - 1) return false;
   if (startX > maze[startY].length - 1) return false;
