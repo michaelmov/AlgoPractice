@@ -25,10 +25,11 @@
 //       -move-> S<L<R -turn-> SvLvR -move-> S L R -> win!
 //               S X S         S X S         SvXvS
 
-interface IDirectionMap {
-  [key: string]: { [key: string]: string };
-}
-const directionMap: IDirectionMap = {
+type TDirection = '^' | 'v' | '<' | '>';
+type TDirectionMap = {
+  [key in TDirection]: { [key: string]: TDirection };
+};
+const directionMap: TDirectionMap = {
   '>': {
     R: 'v',
     S: '>',
