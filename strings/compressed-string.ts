@@ -10,9 +10,9 @@
 // Output: abc4d2ef3
 
 export function compressString(str: string): string {
-  let prevChar = "";
+  let prevChar = '';
   let repCounter = 1;
-  let finalString = "";
+  let finalString = '';
 
   for (let i = 0; i <= str.length; i++) {
     const currentChar = str[i];

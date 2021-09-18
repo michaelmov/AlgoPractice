@@ -1,7 +1,4 @@
-import {
-  LinkedList,
-  removeDuplicatesFromLinkedList,
-} from './remove-duplicates';
+import { LinkedList, removeDuplicatesFromLinkedList } from './remove-duplicates';
 
 test('LinkedList should be defined', () => {
   expect(LinkedList).toBeDefined();

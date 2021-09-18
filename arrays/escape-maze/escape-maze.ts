@@ -29,25 +29,25 @@ interface IDirectionMap {
   [key: string]: { [key: string]: string };
 }
 const directionMap: IDirectionMap = {
-  ">": {
-    R: "v",
-    S: ">",
-    L: "^",
+  '>': {
+    R: 'v',
+    S: '>',
+    L: '^',
   },
   v: {
-    R: "<",
-    S: "v",
-    L: ">",
+    R: '<',
+    S: 'v',
+    L: '>',
   },
-  "^": {
-    R: ">",
-    S: "^",
-    L: "<",
+  '^': {
+    R: '>',
+    S: '^',
+    L: '<',
   },
-  "<": {
-    R: "^",
-    S: "<",
-    L: "v",
+  '<': {
+    R: '^',
+    S: '<',
+    L: 'v',
   },
 };
 
@@ -57,15 +57,15 @@ export function escapeMaze(maze: string[], initialDir: string, startX: number, s
 
   const instruction: string = maze[startY][startX];
 
-  if (instruction === "X") return true;
+  if (instruction === 'X') return true;
 
   const newDirection = directionMap[initialDir][instruction];
 
-  if (newDirection === ">") {
+  if (newDirection === '>') {
     return escapeMaze(maze, newDirection, startX + 1, startY);
-  } else if (newDirection === "v") {
+  } else if (newDirection === 'v') {
     return escapeMaze(maze, newDirection, startX, startY + 1);
-  } else if (newDirection === "<") {
+  } else if (newDirection === '<') {
     return escapeMaze(maze, newDirection, startX - 1, startY);
   } else {
     return escapeMaze(maze, newDirection, startX, startY - 1);
