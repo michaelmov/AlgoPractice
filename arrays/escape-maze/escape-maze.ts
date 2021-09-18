@@ -56,7 +56,7 @@ export function escapeMaze(
   initialDir: string,
   startX: number,
   startY: number
-): any {
+): Boolean {
   if (startY > maze.length - 1) return false;
   if (startX > maze[startY].length - 1) return false;
 
@@ -72,7 +72,7 @@ export function escapeMaze(
     return escapeMaze(maze, newDirection, startX, startY + 1);
   } else if (newDirection === '<') {
     return escapeMaze(maze, newDirection, startX - 1, startY);
-  } else if (newDirection === '^') {
+  } else {
     return escapeMaze(maze, newDirection, startX, startY - 1);
   }
 }
