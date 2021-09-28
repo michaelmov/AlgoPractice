@@ -71,6 +71,21 @@ export class LinkedList {
   }
 
   // O(n) time
+  getValueAtPosition(position: number): number | null {
+    if (position > this.size - 1 || position < 0) throw new Error('Position does not exist');
+    let currentNode = this.head;
+    let currentPos = 0;
+
+    while (currentNode && currentPos < position) {
+      currentNode = currentNode.next;
+      currentPos++;
+    }
+
+    if (currentNode && currentNode.value) return currentNode.value;
+    return null;
+  }
+
+  // O(n) time
   containsNodeWithValue(value: number): boolean {
     let currentNode = this.head;
 

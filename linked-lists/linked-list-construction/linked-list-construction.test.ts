@@ -66,3 +66,27 @@ test('containsNodeWithValue should return correct values', () => {
   expect(ll.containsNodeWithValue(8)).toBeFalsy();
   expect(ll.containsNodeWithValue(4)).toBeTruthy();
 });
+
+test('getValueAtPosition should return correct values', () => {
+  const val1 = new Node(1);
+  const val2 = new Node(2);
+  const val3 = new Node(3);
+  const val4 = new Node(4);
+
+  ll.setTail(val1);
+  ll.setTail(val2);
+  ll.setHead(val3);
+  ll.setTail(val4);
+  // [3, 1, 2, 4]
+
+  expect(() => {
+    ll.getValueAtPosition(4);
+  }).toThrow();
+
+  expect(() => {
+    ll.getValueAtPosition(-5);
+  }).toThrow();
+
+  expect(ll.getValueAtPosition(0)).toEqual(3);
+  expect(ll.getValueAtPosition(3)).toEqual(4);
+});
