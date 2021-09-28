@@ -50,24 +50,27 @@ export class LinkedList {
     this.size++;
   }
 
-  insertBefore(node: Node, nodeToInsert: Node) {
-    // Write your code here.
-  }
-
-  insertAfter(node: Node, nodeToInsert: Node) {
-    // Write your code here.
-  }
-
   insertAtPosition(position: number, nodeToInsert: Node) {
     // Write your code here.
   }
 
-  removeNodesWithValue(value: number) {
-    // Write your code here.
-  }
+  // O(n) time
+  removeNodesWithValue(value: number): void {
+    if (!this.head) return;
+    if (this.head.value === value) {
+      this.head = this.head.next;
+    }
 
-  remove(node: Node) {
-    // Write your code here.
+    let currentNode = this.head;
+
+    while (currentNode) {
+      if (currentNode.next?.value === value) {
+        currentNode.next = currentNode.next.next;
+      }
+      currentNode = currentNode.next;
+    }
+
+    return;
   }
 
   // O(n) time

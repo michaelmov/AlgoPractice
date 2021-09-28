@@ -90,3 +90,51 @@ test('getValueAtPosition should return correct values', () => {
   expect(ll.getValueAtPosition(0)).toEqual(3);
   expect(ll.getValueAtPosition(3)).toEqual(4);
 });
+
+test('removeNodesWithValue should remove the head', () => {
+  const val1 = new Node(1);
+  const val2 = new Node(2);
+  const val3 = new Node(3);
+  const val4 = new Node(4);
+
+  ll.setTail(val1);
+  ll.setTail(val2);
+  ll.setHead(val3);
+  ll.setTail(val4);
+  // [3, 1, 2, 4]
+
+  ll.removeNodesWithValue(3);
+  expect(ll.valuesToArray()).toEqual([1, 2, 4]);
+});
+
+test('removeNodesWithValue should remove a value in the middle', () => {
+  const val1 = new Node(1);
+  const val2 = new Node(2);
+  const val3 = new Node(3);
+  const val4 = new Node(4);
+
+  ll.setTail(val1);
+  ll.setTail(val2);
+  ll.setHead(val3);
+  ll.setTail(val4);
+  // [3, 1, 2, 4]
+
+  ll.removeNodesWithValue(2);
+  expect(ll.valuesToArray()).toEqual([3, 1, 4]);
+});
+
+test('removeNodesWithValue should remove a tail', () => {
+  const val1 = new Node(1);
+  const val2 = new Node(2);
+  const val3 = new Node(3);
+  const val4 = new Node(4);
+
+  ll.setTail(val1);
+  ll.setTail(val2);
+  ll.setHead(val3);
+  ll.setTail(val4);
+  // [3, 1, 2, 4]
+
+  ll.removeNodesWithValue(4);
+  expect(ll.valuesToArray()).toEqual([3, 1, 2]);
+});
