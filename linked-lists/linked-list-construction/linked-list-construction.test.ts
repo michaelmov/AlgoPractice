@@ -138,3 +138,47 @@ test('removeNodesWithValue should remove a tail', () => {
   ll.removeNodesWithValue(4);
   expect(ll.valuesToArray()).toEqual([3, 1, 2]);
 });
+
+test('insertAtPosition should set head or tail first and last positions', () => {
+  const val1 = new Node(1);
+  const val2 = new Node(2);
+  const val3 = new Node(3);
+  const val4 = new Node(4);
+
+  const nodeToInsert = new Node(5);
+  const nodeToInsert2 = new Node(7);
+
+  ll.setTail(val1);
+  ll.setTail(val2);
+  ll.setHead(val3);
+  ll.setTail(val4);
+  // [3, 1, 2, 4]
+
+  ll.insertAtPosition(0, nodeToInsert);
+  ll.insertAtPosition(10, nodeToInsert2);
+
+  expect(ll.valuesToArray()).toEqual([5, 3, 1, 2, 4, 7]);
+});
+
+test('insertAtPosition should set a node in the middle', () => {
+  const val1 = new Node(1);
+  const val2 = new Node(2);
+  const val3 = new Node(3);
+  const val4 = new Node(4);
+
+  const nodeToInsert = new Node(5);
+  const nodeToInsert2 = new Node(10);
+
+  ll.setTail(val1);
+  ll.setTail(val2);
+  ll.setHead(val3);
+  ll.setTail(val4);
+  // [3, 1, 2, 4]
+
+  ll.insertAtPosition(2, nodeToInsert);
+  ll.insertAtPosition(3, nodeToInsert2);
+
+  console.log(ll.valuesToArray());
+  expect(ll.valuesToArray()).toEqual([3, 1, 5, 10, 2, 4]);
+  expect(ll.size).toEqual(6);
+});

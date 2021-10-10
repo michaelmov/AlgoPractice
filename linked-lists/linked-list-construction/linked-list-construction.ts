@@ -50,8 +50,23 @@ export class LinkedList {
     this.size++;
   }
 
-  insertAtPosition(position: number, nodeToInsert: Node) {
-    // Write your code here.
+  // O(n)
+  insertAtPosition(position: number, nodeToInsert: Node): void {
+    if (position <= 0) {
+      this.setHead(nodeToInsert);
+      return;
+    }
+
+    if (position > this.size - 1) {
+      this.setTail(nodeToInsert);
+      return;
+    }
+
+    let pervNode: Node | null = this.getNodeAtPosition(position - 1);
+    let nextNode: Node | null = this.getNodeAtPosition(position);
+    if (nextNode) nodeToInsert.next = nextNode;
+    if (pervNode) pervNode.next = nodeToInsert;
+    this.size++;
   }
 
   // O(n) time
@@ -85,6 +100,21 @@ export class LinkedList {
     }
 
     if (currentNode && currentNode.value) return currentNode.value;
+    return null;
+  }
+
+  // O(n) time
+  getNodeAtPosition(position: number): Node | null {
+    if (position > this.size - 1 || position < 0) throw new Error('Position does not exist');
+    let currentNode = this.head;
+    let currentPos = 0;
+
+    while (currentNode && currentPos < position) {
+      currentNode = currentNode.next;
+      currentPos++;
+    }
+
+    if (currentNode && currentNode.value) return currentNode;
     return null;
   }
 
